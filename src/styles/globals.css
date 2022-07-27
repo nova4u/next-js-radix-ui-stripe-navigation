@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply antialiased bg-slate-800;
+}
+
 @font-face {
   font-family: "Inter var";
   font-style: normal;
@@ -9,4 +13,73 @@
   font-display: swap;
   src: url("/Inter-roman-latin.var.woff2") format("woff2") tech("variants"),
     url("/Inter-roman-latin.var.woff2") format("woff2-variations");
+}
+
+.viewport {
+  @apply h-[var(--radix-navigation-menu-viewport-height)] md:w-[var(--radix-navigation-menu-viewport-width)] w-full transition-all;
+}
+
+.content[data-motion="from-start"] {
+  animation-timing-function: "ease-out";
+  animation-duration: 300ms;
+  animation-name: enterFromLeft;
+}
+.content[data-motion="from-end"] {
+  animation-timing-function: "ease-out";
+  animation-duration: 300ms;
+  animation-name: enterFromRight;
+}
+.content[data-motion="to-start"] {
+  animation-timing-function: "ease-out";
+  animation-duration: 300ms;
+  animation-name: exitToLeft;
+}
+.content[data-motion="to-end"] {
+  animation-timing-function: "ease-out";
+  animation-duration: 300ms;
+  animation-name: exitToRight;
+}
+
+@keyframes enterFromRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes enterFromLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes exitToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes exitToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
 }

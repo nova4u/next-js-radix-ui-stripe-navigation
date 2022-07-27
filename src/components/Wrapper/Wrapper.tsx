@@ -12,10 +12,7 @@ const Wrapper = ({
   ...rest
 }: React.PropsWithChildren<Props>) => {
   return (
-    <div
-      className={`max-w-screen-xl px-2 lg:px-3 mx-auto ${className}`}
-      {...rest}
-    >
+    <div className={`max-w-screen-xl px-6 mx-auto ${className}`} {...rest}>
       {children}
     </div>
   );
